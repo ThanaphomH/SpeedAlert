@@ -23,13 +23,26 @@ To read more about using these font, please visit the Next.js documentation:
 - App Directory: https://nextjs.org/docs/app/building-your-application/optimizing/fonts
 - Pages Directory: https://nextjs.org/docs/pages/building-your-application/optimizing/fonts
 **/
-import { SelectValue, SelectTrigger, SelectItem, SelectGroup, SelectContent, Select } from "@/components/ui/select"
-import AlertCard from "./alertCard"
+"use client"
 import { LayoutGridIcon } from "../ui/icon"
-import DashboardCard from "./dashboardCard"
-import DashboardGraph from "./dashboardGraph"
+import { useState } from "react"
+import Dashboard from "./dashboard"
+import AlertRecord from "./alertRecord";
 
 export function Main() {
+  const [mode, setMode] = useState("dashboard");
+  let mainComponent
+  switch(mode) {
+    case "dashboard" :
+      mainComponent = <Dashboard navigate={() => setMode("alertrecord")}/>
+      break;
+    case "alertrecord" :
+      mainComponent = <AlertRecord />
+      break;
+    default :
+      mainComponent = <div />
+      break;
+  }
   return (
     <div className="flex min-h-screen w-full flex-col">
       <header className="flex items-center justify-between bg-gray-900 px-6 py-4 text-white">
@@ -37,81 +50,23 @@ export function Main() {
           <LayoutGridIcon className="h-6 w-6" />
           <h1 className="text-xl font-bold">Alert Dashboard</h1>
         </div>
-        <Select defaultValue="location1">
-          <SelectTrigger className="w-48 text-black">
-            <SelectValue placeholder="Select Location" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectItem value="location1">Location 1</SelectItem>
-              <SelectItem value="location2">Location 2</SelectItem>
-              <SelectItem value="location3">Location 3</SelectItem>
-            </SelectGroup>
-          </SelectContent>
-        </Select>
+
       </header>
       <div className="flex h-full">
 
-        {/* Dashboard Tab */}
-        <div className="w-[20%] p-6">
-          <h2 className="mb-4 text-lg font-bold">Dashboard</h2>
-          <div className="grid grid-cols-1 gap-4">
-            <DashboardCard 
-              title="Total Alerts"
-              content="25"
-              icon="bell"
-            />
-            <DashboardCard 
-              title="High Alerts"
-              content="8"
-              icon="gauge"
-            />
-            <DashboardCard 
-              title="Average speed"
-              content="105 mph"
-              icon="gauge"
-            />
-            <DashboardGraph />
-            
-          </div>
+        {/* Left Tab */}
+        <div className="flex flex-col gap-4 w-[15%] pl-6 py-6 font-bold">
+          <span className={(mode == "dashboard" ? "bg-gray-100" : "") + " p-2 rounded-lg rounded-r-none hover:cursor-pointer"} onClick={() => {setMode("dashboard")}}>
+            Dashboard
+          </span>
+          <span className={(mode == "alertrecord" ? "bg-gray-100" : "") + " p-2 rounded-lg rounded-r-none hover:cursor-pointer"} onClick={() => {setMode("alertrecord")}}>
+            Alert Record
+          </span>
         </div>
 
-        {/* Alert Tab */}
-        <div className="flex-1 flex-col bg-gray-100 p-6 dark:bg-gray-800">
-          <h2 className="mb-4 text-lg font-bold">Alerts</h2>
-          <div className="grid gap-4">
-            <AlertCard
-              name="Alert 1"
-              description="2:45 PM - 120 mph"
-              image={[
-                { src: "/placeholder.svg", alt: "Alert Image" },
-                { src: "/placeholder.svg", alt: "Alert Image" },
-                { src: "/placeholder.svg", alt: "Alert Image" },
-                { src: "/placeholder.svg", alt: "Alert Image" },
-                { src: "/placeholder.svg", alt: "Alert Image" },
-                { src: "/placeholder.svg", alt: "Alert Image" },
-                { src: "/placeholder.svg", alt: "Alert Image" }
-              ]}
-            />
-            <AlertCard
-              name="Alert 2"
-              description="3:15 PM - 95 mph"
-              image={[
-                { src: "/placeholder.svg", alt: "Alert Image" },
-                { src: "/placeholder.svg", alt: "Alert Image" },
-                { src: "/placeholder.svg", alt: "Alert Image" }
-              ]}
-            />
-            <AlertCard
-              name="Alert 3"
-              description="3:15 PM - 95 mph"
-              image={[
-                { src: "/placeholder.svg", alt: "Alert Image" },
-                { src: "/placeholder.svg", alt: "Alert Image" },
-                { src: "/placeholder.svg", alt: "Alert Image" }
-              ]}
-            />
-          </div>
+        {/* Right Tab */}
+        <div className="flex-1 flex-col bg-gray-100 p-6 dark:bg-gray-800 gap-4 min-h-svh">
+          {mainComponent}
         </div>
 
       </div>

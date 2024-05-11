@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card"
-import { BellIcon, GaugeIcon } from "../ui/icon";
+import { AlertIcon, BellIcon, GaugeIcon } from "../ui/icon";
 
 interface DashboardCardProps {
     title : string;
@@ -8,13 +8,17 @@ interface DashboardCardProps {
     icon : string;
 }
 const DashboardCard: React.FC<DashboardCardProps> = ({title, content, icon}) => {
+    const iconClassName = "h-6 w-6 text-gray-500 dark:text-gray-400";
     let iconComponent;
     switch(icon) {
         case "bell" :
-            iconComponent = <BellIcon className="h-6 w-6 text-gray-500 dark:text-gray-400" />
+            iconComponent = <BellIcon className={iconClassName} />
             break;
         case "gauge" :
-            iconComponent = <GaugeIcon className="h-6 w-6 text-gray-500 dark:text-gray-400" />
+            iconComponent = <GaugeIcon className={iconClassName} />
+            break;
+        case "alert" :
+            iconComponent = <AlertIcon className={iconClassName} />
             break;
         default :
             iconComponent = <div />
@@ -22,11 +26,11 @@ const DashboardCard: React.FC<DashboardCardProps> = ({title, content, icon}) => 
     }
     return (
         <Card>
-            <CardHeader className="flex items-center justify-between">
-                <CardTitle>{title}</CardTitle>
+            <CardHeader className="flex flex-row gap-3 items-center">
                 {iconComponent}
+                <CardTitle className="text-xl text-gray-500 pb-1">{title}</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="flex flex-col items-center justify-center">
                 <div className="text-4xl font-bold">{content}</div>
             </CardContent>
         </Card>

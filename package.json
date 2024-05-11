@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@nivo/bar": "^0.86.0",
+    "@nivo/line": "^0.86.0",
     "@radix-ui/react-icons": "^1.3.0",
     "@radix-ui/react-select": "^2.0.0",
     "class-variance-authority": "^0.7.0",
