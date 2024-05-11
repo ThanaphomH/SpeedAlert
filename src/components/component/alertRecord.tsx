@@ -25,8 +25,8 @@ export default function AlertRecord() {
             </div>
 
             <div className="flex flex-col px-[5%] mt-4 items-center justify-center gap-4">
-                <AlertHeader />
-                <AlertItem />
+                <AlertHeader showLocation={true}/>
+                <AlertItem location="location 1" time="1 minute ago" speed={200}/>
             </div>
         </>
 

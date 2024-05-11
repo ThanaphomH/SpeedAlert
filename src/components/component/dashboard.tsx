@@ -44,12 +44,12 @@ export default function Dashboard(props) {
                 />
 
                 <div className="col-span-2">
-                    <DashboardRecentAlert 
-                        navigate={props.navigate}
+                    <DashboardGraphBar
                     />
                 </div>
 
-                <DashboardGraphBar
+                <DashboardRecentAlert
+                    navigate={props.navigate}
                 />
 
                 <div className="col-span-3">

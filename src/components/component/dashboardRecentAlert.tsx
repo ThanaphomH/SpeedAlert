@@ -15,12 +15,12 @@ const DashboardRecentAlert : React.FC<DashboardRecentAlertProps> = ({navigate}) 
                 <CardTitle className="text-xl text-gray-500 pb-1">Recent Alert</CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col px-[5%] items-center justify-center gap-2">
-                <AlertHeader />
-                <AlertItem />
-                <AlertItem />
-                <AlertItem />
-                <AlertItem />
-                <AlertItem />
+                <AlertHeader showLocation={false}/>
+                <AlertItem time="1 minute ago" speed={200}/>
+                <AlertItem time="1 minute ago" speed={200}/>
+                <AlertItem time="1 minute ago" speed={200}/>
+                <AlertItem time="1 minute ago" speed={200}/>
+                <AlertItem time="1 minute ago" speed={200}/>
                 <div className="flex flex-row gap-2 hover:cursor-pointer" onClick={navigate}>
                     <DownIcon className="mt-1 h-6 w-6 text-gray-500 dark:text-gray-400" />
                     <div className="text-lg ">View All</div>

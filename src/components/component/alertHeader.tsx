@@ -1,9 +1,12 @@
-const AlertHeader = () => {
+interface AlertHeaderProps {
+    showLocation : boolean
+}
+const AlertHeader : React.FC<AlertHeaderProps> = ({showLocation}) => {
     return (
-        <div className="grid grid-cols-7 w-full items-start font-bold">
-            <span className="col-span-3">
+        <div className={"grid w-full items-center font-bold " + (showLocation ? "grid-cols-7" : "grid-cols-4")}>
+            {showLocation && <span className="col-span-3">
                 Location
-            </span>
+            </span>}
             <span className="col-span-2">
                 Time
             </span>

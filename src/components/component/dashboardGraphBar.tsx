@@ -13,7 +13,7 @@ const DashboardGraphBar: React.FC<DashboardGraphBarProps> = ({ }) => {
         <CardTitle className="text-xl text-gray-500 pb-1">Alert Each Day</CardTitle>
       </CardHeader>
       <CardContent>
-        <BarChart className="w-full aspect-[5/4]"/>
+        <BarChart className="w-full aspect-[11/4]"/>
       </CardContent>
     </Card>
   )
@@ -24,12 +24,13 @@ function BarChart(props) {
     <div {...props}>
       <ResponsiveBar
         data={[
-          { name: "Jan", count: 111 },
-          { name: "Feb", count: 157 },
-          { name: "Mar", count: 129 },
-          { name: "Apr", count: 150 },
-          { name: "May", count: 119 },
-          { name: "Jun", count: 72 },
+          { name: "Sun", count: 111 },
+          { name: "Mon", count: 157 },
+          { name: "Tue", count: 129 },
+          { name: "Wed", count: 150 },
+          { name: "Thu", count: 119 },
+          { name: "Fri", count: 72 },
+          { name: "Sat", count: 72 },
         ]}
         keys={["count"]}
         indexBy="name"
