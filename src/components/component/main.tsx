@@ -24,19 +24,21 @@ To read more about using these font, please visit the Next.js documentation:
 - Pages Directory: https://nextjs.org/docs/pages/building-your-application/optimizing/fonts
 **/
 import { SelectValue, SelectTrigger, SelectItem, SelectGroup, SelectContent, Select } from "@/components/ui/select"
-import { CardTitle, CardDescription, CardHeader, CardContent, Card } from "@/components/ui/card"
-import { ResponsiveBar } from "@nivo/bar"
+import AlertCard from "./alertCard"
+import { LayoutGridIcon } from "../ui/icon"
+import DashboardCard from "./dashboardCard"
+import DashboardGraph from "./dashboardGraph"
 
 export function Main() {
   return (
-    <div className="flex h-screen w-full flex-col">
+    <div className="flex min-h-screen w-full flex-col">
       <header className="flex items-center justify-between bg-gray-900 px-6 py-4 text-white">
         <div className="flex items-center gap-4">
           <LayoutGridIcon className="h-6 w-6" />
           <h1 className="text-xl font-bold">Alert Dashboard</h1>
         </div>
         <Select defaultValue="location1">
-          <SelectTrigger className="w-48">
+          <SelectTrigger className="w-48 text-black">
             <SelectValue placeholder="Select Location" />
           </SelectTrigger>
           <SelectContent>
@@ -49,279 +51,75 @@ export function Main() {
         </Select>
       </header>
       <div className="flex h-full">
-        <div className="bg-gray-100 p-6 dark:bg-gray-800">
+
+        {/* Dashboard Tab */}
+        <div className="w-[20%] p-6">
+          <h2 className="mb-4 text-lg font-bold">Dashboard</h2>
+          <div className="grid grid-cols-1 gap-4">
+            <DashboardCard 
+              title="Total Alerts"
+              content="25"
+              icon="bell"
+            />
+            <DashboardCard 
+              title="High Alerts"
+              content="8"
+              icon="gauge"
+            />
+            <DashboardCard 
+              title="Average speed"
+              content="105 mph"
+              icon="gauge"
+            />
+            <DashboardGraph />
+            
+          </div>
+        </div>
+
+        {/* Alert Tab */}
+        <div className="flex-1 flex-col bg-gray-100 p-6 dark:bg-gray-800">
           <h2 className="mb-4 text-lg font-bold">Alerts</h2>
           <div className="grid gap-4">
-            <Card>
-              <CardHeader>
-                <CardTitle>Alert 1</CardTitle>
-                <CardDescription>2:45 PM - 120 mph</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-2 gap-4">
-                  <img
-                    alt="Alert Image"
-                    className="rounded-md object-cover"
-                    height={150}
-                    src="/placeholder.svg"
-                    style={{
-                      aspectRatio: "200/150",
-                      objectFit: "cover",
-                    }}
-                    width={200}
-                  />
-                  <img
-                    alt="Alert Image"
-                    className="rounded-md object-cover"
-                    height={150}
-                    src="/placeholder.svg"
-                    style={{
-                      aspectRatio: "200/150",
-                      objectFit: "cover",
-                    }}
-                    width={200}
-                  />
-                </div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle>Alert 2</CardTitle>
-                <CardDescription>3:15 PM - 95 mph</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-2 gap-4">
-                  <img
-                    alt="Alert Image"
-                    className="rounded-md object-cover"
-                    height={150}
-                    src="/placeholder.svg"
-                    style={{
-                      aspectRatio: "200/150",
-                      objectFit: "cover",
-                    }}
-                    width={200}
-                  />
-                </div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle>Alert 3</CardTitle>
-                <CardDescription>4:30 PM - 110 mph</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-2 gap-4">
-                  <img
-                    alt="Alert Image"
-                    className="rounded-md object-cover"
-                    height={150}
-                    src="/placeholder.svg"
-                    style={{
-                      aspectRatio: "200/150",
-                      objectFit: "cover",
-                    }}
-                    width={200}
-                  />
-                  <img
-                    alt="Alert Image"
-                    className="rounded-md object-cover"
-                    height={150}
-                    src="/placeholder.svg"
-                    style={{
-                      aspectRatio: "200/150",
-                      objectFit: "cover",
-                    }}
-                    width={200}
-                  />
-                </div>
-              </CardContent>
-            </Card>
+            <AlertCard
+              name="Alert 1"
+              description="2:45 PM - 120 mph"
+              image={[
+                { src: "/placeholder.svg", alt: "Alert Image" },
+                { src: "/placeholder.svg", alt: "Alert Image" },
+                { src: "/placeholder.svg", alt: "Alert Image" },
+                { src: "/placeholder.svg", alt: "Alert Image" },
+                { src: "/placeholder.svg", alt: "Alert Image" },
+                { src: "/placeholder.svg", alt: "Alert Image" },
+                { src: "/placeholder.svg", alt: "Alert Image" }
+              ]}
+            />
+            <AlertCard
+              name="Alert 2"
+              description="3:15 PM - 95 mph"
+              image={[
+                { src: "/placeholder.svg", alt: "Alert Image" },
+                { src: "/placeholder.svg", alt: "Alert Image" },
+                { src: "/placeholder.svg", alt: "Alert Image" }
+              ]}
+            />
+            <AlertCard
+              name="Alert 3"
+              description="3:15 PM - 95 mph"
+              image={[
+                { src: "/placeholder.svg", alt: "Alert Image" },
+                { src: "/placeholder.svg", alt: "Alert Image" },
+                { src: "/placeholder.svg", alt: "Alert Image" }
+              ]}
+            />
           </div>
         </div>
-        <div className="flex-1 p-6">
-          <h2 className="mb-4 text-lg font-bold">Dashboard</h2>
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
-            <Card>
-              <CardHeader className="flex items-center justify-between">
-                <CardTitle>Total Alerts</CardTitle>
-                <BellIcon className="h-6 w-6 text-gray-500 dark:text-gray-400" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-4xl font-bold">25</div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader className="flex items-center justify-between">
-                <CardTitle>High Alerts</CardTitle>
-                <GaugeIcon className="h-6 w-6 text-gray-500 dark:text-gray-400" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-4xl font-bold">8</div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader className="flex items-center justify-between">
-                <CardTitle>Average Speed</CardTitle>
-                <GaugeIcon className="h-6 w-6 text-gray-500 dark:text-gray-400" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-4xl font-bold">105 mph</div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader className="flex items-center justify-between">
-                <CardTitle>Alerts by Day</CardTitle>
-                <CalendarIcon className="h-6 w-6 text-gray-500 dark:text-gray-400" />
-              </CardHeader>
-              <CardContent>
-                <BarChart className="w-full aspect-[4/3]" />
-              </CardContent>
-            </Card>
-          </div>
-        </div>
+
       </div>
     </div>
   )
 }
 
-function BarChart(props) {
-  return (
-    <div {...props}>
-      <ResponsiveBar
-        data={[
-          { name: "Jan", count: 111 },
-          { name: "Feb", count: 157 },
-          { name: "Mar", count: 129 },
-          { name: "Apr", count: 150 },
-          { name: "May", count: 119 },
-          { name: "Jun", count: 72 },
-        ]}
-        keys={["count"]}
-        indexBy="name"
-        margin={{ top: 0, right: 0, bottom: 40, left: 40 }}
-        padding={0.3}
-        colors={["#2563eb"]}
-        axisBottom={{
-          tickSize: 0,
-          tickPadding: 16,
-        }}
-        axisLeft={{
-          tickSize: 0,
-          tickValues: 4,
-          tickPadding: 16,
-        }}
-        gridYValues={4}
-        theme={{
-          tooltip: {
-            chip: {
-              borderRadius: "9999px",
-            },
-            container: {
-              fontSize: "12px",
-              textTransform: "capitalize",
-              borderRadius: "6px",
-            },
-          },
-          grid: {
-            line: {
-              stroke: "#f3f4f6",
-            },
-          },
-        }}
-        tooltipLabel={({ id }) => `${id}`}
-        enableLabel={false}
-        role="application"
-        ariaLabel="A bar chart showing data"
-      />
-    </div>
-  )
-}
 
 
-function BellIcon(props) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
-      <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
-    </svg>
-  )
-}
 
 
-function CalendarIcon(props) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M8 2v4" />
-      <path d="M16 2v4" />
-      <rect width="18" height="18" x="3" y="4" rx="2" />
-      <path d="M3 10h18" />
-    </svg>
-  )
-}
-
-
-function GaugeIcon(props) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="m12 14 4-4" />
-      <path d="M3.34 19a10 10 0 1 1 17.32 0" />
-    </svg>
-  )
-}
-
-
-function LayoutGridIcon(props) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <rect width="7" height="7" x="3" y="3" rx="1" />
-      <rect width="7" height="7" x="14" y="3" rx="1" />
-      <rect width="7" height="7" x="14" y="14" rx="1" />
-      <rect width="7" height="7" x="3" y="14" rx="1" />
-    </svg>
-  )
-}
