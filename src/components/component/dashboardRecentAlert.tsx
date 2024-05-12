@@ -3,11 +3,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "../ui/card"
 import { DownIcon, RecentIcon } from "../ui/icon"
 import AlertHeader from "./alertHeader"
 import AlertItem from "./alertItem"
+import { Data } from "@/interface/data"
 
 interface DashboardRecentAlertProps {
-    navigate : () => {}
+    datas : Data[];
+    navigate : () => {};
 }
-const DashboardRecentAlert : React.FC<DashboardRecentAlertProps> = ({navigate}) => {
+const DashboardRecentAlert : React.FC<DashboardRecentAlertProps> = ({datas, navigate}) => {
     return (
         <Card className="h-full">
             <CardHeader className="flex flex-row gap-3 items-center">
@@ -16,11 +18,9 @@ const DashboardRecentAlert : React.FC<DashboardRecentAlertProps> = ({navigate}) 
             </CardHeader>
             <CardContent className="flex flex-col px-[5%] items-center justify-center gap-2">
                 <AlertHeader showLocation={false}/>
-                <AlertItem time="1 minute ago" speed={200}/>
-                <AlertItem time="1 minute ago" speed={200}/>
-                <AlertItem time="1 minute ago" speed={200}/>
-                <AlertItem time="1 minute ago" speed={200}/>
-                <AlertItem time="1 minute ago" speed={200}/>
+                {datas.map(data => (
+                    <AlertItem speed={data.speed} time={data.time}/>
+                ))}
                 <div className="flex flex-row gap-2 hover:cursor-pointer" onClick={navigate}>
                     <DownIcon className="mt-1 h-6 w-6 text-gray-500 dark:text-gray-400" />
                     <div className="text-lg ">View All</div>

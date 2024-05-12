@@ -1,32 +1,29 @@
-import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import AlertHeader from "./alertHeader";
 import AlertItem from "./alertItem";
+import LocationSelector from "./locationSelector";
+import { useState } from "react";
+import useDataLocation from "@/hook/useDataLocation";
+import useData from "@/hook/useData";
 
 export default function AlertRecord() {
+    const [currentLocation , setCurrentLocation] = useState("all");
+    const {data : locationList} = useDataLocation();
+    const {data : filteredData, isLoading, isRefetching} = useData(currentLocation);
     return (
         <>
             <div className="flex flex-row justify-between">
                 <h2 className="mb-4 text-lg font-bold">Alert Record</h2>
                 <div className="flex flex-row gap-4">
-
-                    <Select defaultValue="location1">
-                        <SelectTrigger className="w-48 text-black">
-                            <SelectValue placeholder="Select Location" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectGroup>
-                                <SelectItem value="location1">Location 1</SelectItem>
-                                <SelectItem value="location2">Location 2</SelectItem>
-                                <SelectItem value="location3">Location 3</SelectItem>
-                            </SelectGroup>
-                        </SelectContent>
-                    </Select>
+                    <LocationSelector
+                        value={locationList === undefined ? [] : locationList}
+                        setValue={setCurrentLocation}
+                    />
                 </div>
             </div>
 
             <div className="flex flex-col px-[5%] mt-4 items-center justify-center gap-4">
-                <AlertHeader showLocation={true}/>
-                <AlertItem location="location 1" time="1 minute ago" speed={200}/>
+                <AlertHeader showLocation={true} />
+                {filteredData?.map(data => <AlertItem location={data.location} time={data.time} speed={data.speed} />)}
             </div>
         </>
 

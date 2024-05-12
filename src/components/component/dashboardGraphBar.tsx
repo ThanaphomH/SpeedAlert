@@ -2,10 +2,42 @@ import { Card, CardContent, CardHeader, CardTitle } from "../ui/card"
 import { ResponsiveBar } from "@nivo/bar"
 import React from "react";
 import { CalendarIcon } from "../ui/icon";
+import { Data } from "@/interface/data";
 
 interface DashboardGraphBarProps {
+  datas: Data[]
 }
-const DashboardGraphBar: React.FC<DashboardGraphBarProps> = ({ }) => {
+const DashboardGraphBar: React.FC<DashboardGraphBarProps> = ({ datas }) => {
+  const allTime = datas.map(data => {
+    const time = new Date(data.time);
+    return time.toString().substring(0, 3);
+  })
+  let barData = [
+    { name: "Sun", count: 0 },
+    { name: "Mon", count: 0 },
+    { name: "Tue", count: 0 },
+    { name: "Wed", count: 0 },
+    { name: "Thu", count: 0 },
+    { name: "Fri", count: 0 },
+    { name: "Sat", count: 0 },
+  ]
+  allTime.forEach(time => {
+    if (time == "Sun") {
+      barData[0].count += 1;
+    } else if (time == "Mon") {
+      barData[1].count += 1;
+    } else if (time == "Tue") {
+      barData[2].count += 1;
+    } else if (time == "Wed") {
+      barData[3].count += 1;
+    } else if (time == "Thu") {
+      barData[4].count += 1;
+    } else if (time == "Fri") {
+      barData[5].count += 1;
+    } else if (time == "Sat") {
+      barData[6].count += 1;
+    } 
+  })
   return (
     <Card>
       <CardHeader className="flex flex-row gap-3 items-center">
@@ -13,25 +45,18 @@ const DashboardGraphBar: React.FC<DashboardGraphBarProps> = ({ }) => {
         <CardTitle className="text-xl text-gray-500 pb-1">Alert Each Day</CardTitle>
       </CardHeader>
       <CardContent>
-        <BarChart className="w-full aspect-[11/4]"/>
+        <BarChart className="w-full aspect-[11/4]" barData={barData}/>
       </CardContent>
     </Card>
   )
 }
 
-function BarChart(props) {
+
+function BarChart({className ,barData}) {
   return (
-    <div {...props}>
+    <div className={className}>
       <ResponsiveBar
-        data={[
-          { name: "Sun", count: 111 },
-          { name: "Mon", count: 157 },
-          { name: "Tue", count: 129 },
-          { name: "Wed", count: 150 },
-          { name: "Thu", count: 119 },
-          { name: "Fri", count: 72 },
-          { name: "Sat", count: 72 },
-        ]}
+        data={barData}
         keys={["count"]}
         indexBy="name"
         margin={{ top: 0, right: 0, bottom: 40, left: 40 }}
