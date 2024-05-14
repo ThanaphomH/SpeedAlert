@@ -39,12 +39,12 @@ const DashboardGraphBar: React.FC<DashboardGraphBarProps> = ({ datas }) => {
     } 
   })
   return (
-    <Card>
-      <CardHeader className="flex flex-row gap-3 items-center">
+    <Card className="flex flex-grow flex-col h-full">
+      <CardHeader className="flex flex-row gap-3 items-center p-3 sm:p-6">
         <CalendarIcon className="h-6 w-6 text-gray-500 dark:text-gray-400" />
         <CardTitle className="text-xl text-gray-500 pb-1">Alert Each Day</CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className="flex flex-grow p-3 md:p-6 pt-0">
         <BarChart className="w-full aspect-[11/4]" barData={barData}/>
       </CardContent>
     </Card>

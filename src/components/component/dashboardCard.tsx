@@ -25,13 +25,13 @@ const DashboardCard: React.FC<DashboardCardProps> = ({title, content, icon}) => 
             break;
     }
     return (
-        <Card>
-            <CardHeader className="flex flex-row gap-3 items-center">
+        <Card className="flex flex-grow flex-col h-full justify-between">
+            <CardHeader className="flex flex-col lg:flex-row gap-3 items-center">
                 {iconComponent}
-                <CardTitle className="text-xl text-gray-500 pb-1">{title}</CardTitle>
+                <CardTitle className="text-xl text-gray-500 pb-1 text-center lg:text-left">{title}</CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col items-center justify-center">
-                <div className="text-4xl font-bold">{content}</div>
+                <div className="text-4xl font-bold text-center">{content}</div>
             </CardContent>
         </Card>
     )

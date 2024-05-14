@@ -52,7 +52,7 @@ const DashboardGraphLine: React.FC<DashboardGraphLineProps> = ({ datas }) => {
                 <CardTitle className="text-xl text-gray-500 pb-1">Alert Each Hour</CardTitle>
             </CardHeader>
             <CardContent>
-                <LineChart className="w-full aspect-[13/3]" barData={barData} />
+                <LineChart className="w-full aspect-[7/3] lg:aspect-[13/3]" barData={barData} />
             </CardContent>
         </Card>
     )

@@ -25,7 +25,7 @@ const AlertItem: React.FC<AlertItemProps> = ({ location, time, speed }) => {
             <span className="col-span-1">
                 {speed}
             </span>
-            <button className="w-16 h-8 bg-[#2563eb] text-white rounded-lg items-center justify-center flex select-none" onClick={onOpen}>
+            <button className="w-12 sm:w-16 h-8 bg-[#2563eb] text-white rounded-lg items-center justify-center flex select-none" onClick={onOpen}>
                 View
             </button>
             <Modal
