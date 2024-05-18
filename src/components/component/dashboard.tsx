@@ -68,7 +68,7 @@ const Dashboard: React.FC<DashboardProps> = ({navigate}) => {
 
                     <div className="col-span-3 lg:col-span-1">
                         <DashboardRecentAlert
-                            datas={filteredData === undefined ? [] : filteredData.slice(0, 5)}
+                            datas={filteredData === undefined ? [] : filteredData.slice(-5).reverse()}
                             navigate={navigate}
                         />
                     </div>
