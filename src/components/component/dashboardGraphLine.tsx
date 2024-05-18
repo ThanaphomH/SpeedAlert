@@ -58,8 +58,14 @@ const DashboardGraphLine: React.FC<DashboardGraphLineProps> = ({ datas }) => {
     )
 }
 
-function LineChart({ className, barData }) {
-
+interface LineChartProps {
+    className : string,
+    barData : {
+        x: string;
+        y: number;
+    }[]
+}
+const LineChart: React.FC<LineChartProps> = ({ className, barData }) => {
     return (
         <div className={className}>
             <ResponsiveLine

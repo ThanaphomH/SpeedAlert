@@ -41,8 +41,8 @@ const AlertItemModal: React.FC<AlertItemModalProps> = ({ isOpen, onClose, images
                                         </div>
 
                                         <div className="flex flex-row overflow-x-auto gap-2 py-1">
-                                            {images.map(image => (
-                                                <Image src={image} placeholder="blur" alt="image" className="w-40 h-24 object-contain hover:cursor-pointer" onClick={() => setCurrentImg(image)}/>
+                                            {images.map((image,index) => (
+                                                <Image key={index} src={image} placeholder="blur" alt="image" className="w-40 h-24 object-contain hover:cursor-pointer" onClick={() => setCurrentImg(image)}/>
                                             ))}
                                         </div>
                                     </>

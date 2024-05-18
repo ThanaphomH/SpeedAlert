@@ -7,7 +7,7 @@ import { Data } from "@/interface/data"
 
 interface DashboardRecentAlertProps {
     datas: Data[];
-    navigate: () => {};
+    navigate: () => void;
 }
 const DashboardRecentAlert: React.FC<DashboardRecentAlertProps> = ({ datas, navigate }) => {
     return (
@@ -19,8 +19,8 @@ const DashboardRecentAlert: React.FC<DashboardRecentAlertProps> = ({ datas, navi
             <CardContent className="flex flex-grow flex-col px-[5%] items-center justify-between gap-2">
                 <AlertHeader showLocation={true} />
                 <div className="flex flex-grow flex-col gap-2 w-full justify-between">
-                    {datas.map(data => (
-                        <AlertItem speed={data.speed} time={data.time} location={data.location} showLocation={false} />
+                    {datas.map((data,index) => (
+                        <AlertItem key={index} speed={data.speed} time={data.time} location={data.location} showLocation={false} />
                     ))}
                 </div>
 

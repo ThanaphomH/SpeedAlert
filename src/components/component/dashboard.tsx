@@ -15,7 +15,10 @@ function average(data: Data[]) {
     return (sum / data.length).toFixed(1);
 }
 
-export default function Dashboard(props) {
+interface DashboardProps {
+    navigate: () => void
+}
+const Dashboard: React.FC<DashboardProps> = ({navigate}) => {
     const [currentLocation, setCurrentLocation] = useState("all");
 
     const { data: filteredData, isLoading, isRefetching } = useData(currentLocation);
@@ -66,7 +69,7 @@ export default function Dashboard(props) {
                     <div className="col-span-3 lg:col-span-1">
                         <DashboardRecentAlert
                             datas={filteredData === undefined ? [] : filteredData.slice(0, 5)}
-                            navigate={props.navigate}
+                            navigate={navigate}
                         />
                     </div>
 
@@ -85,3 +88,5 @@ export default function Dashboard(props) {
         </>
     )
 }
+
+export default Dashboard;

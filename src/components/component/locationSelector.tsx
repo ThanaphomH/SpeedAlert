@@ -14,7 +14,7 @@ const LocationSelector: React.FC<LocationSelectorProps> = ({value , setValue}) =
             <SelectContent>
                 <SelectGroup>
                     <SelectItem value="all">All Location</SelectItem>
-                    {value.map((val) => (<SelectItem value={val}>{val}</SelectItem>))}
+                    {value.map((val) => (<SelectItem key={val} value={val}>{val}</SelectItem>))}
                 </SelectGroup>
             </SelectContent>
         </Select>

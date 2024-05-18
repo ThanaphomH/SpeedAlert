@@ -36,7 +36,7 @@ const DashboardGraphBar: React.FC<DashboardGraphBarProps> = ({ datas }) => {
       barData[5].count += 1;
     } else if (time == "Sat") {
       barData[6].count += 1;
-    } 
+    }
   })
   return (
     <Card className="flex flex-grow flex-col h-full">
@@ -45,14 +45,20 @@ const DashboardGraphBar: React.FC<DashboardGraphBarProps> = ({ datas }) => {
         <CardTitle className="text-xl text-gray-500 pb-1">Alert Each Day</CardTitle>
       </CardHeader>
       <CardContent className="flex flex-grow p-3 md:p-6 pt-0">
-        <BarChart className="w-full aspect-[11/4]" barData={barData}/>
+        <BarChart className="w-full aspect-[11/4]" barData={barData} />
       </CardContent>
     </Card>
   )
 }
 
-
-function BarChart({className ,barData}) {
+interface BarChartProps {
+  className: string,
+  barData: {
+    name: string;
+    count: number;
+  }[]
+}
+const BarChart: React.FC<BarChartProps> = ({ className, barData }) => {
   return (
     <div className={className}>
       <ResponsiveBar
