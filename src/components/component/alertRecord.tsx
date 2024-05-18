@@ -23,7 +23,7 @@ export default function AlertRecord() {
 
             <div className="flex flex-col sm:px-[5%] mt-4 items-center justify-center gap-4 text-xs sm:text-base">
                 <AlertHeader showLocation={true} />
-                {filteredData?.map(data => <AlertItem location={data.location} time={data.time} speed={data.speed} />)}
+                {filteredData?.map(data => <AlertItem location={data.location} time={data.time} speed={data.speed} showLocation={true}/>)}
             </div>
         </>
 
