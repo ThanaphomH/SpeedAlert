@@ -3,18 +3,15 @@ interface AlertHeaderProps {
 }
 const AlertHeader : React.FC<AlertHeaderProps> = ({showLocation}) => {
     return (
-        <div className={"grid w-full items-center font-bold " + (showLocation ? "grid-cols-7" : "grid-cols-4")}>
-            {showLocation && <span className="col-span-3">
+        <div className={"grid w-full gap-1 items-center font-bold " + "grid-cols-7"}>
+            <span className="col-span-3">
                 Location
-            </span>}
-            <span className="col-span-2">
+            </span>
+            <span className="col-span-3">
                 Time
             </span>
             <span className="col-span-1">
                 Speed
-            </span>
-            <span>
-                Image
             </span>
         </div>
     )

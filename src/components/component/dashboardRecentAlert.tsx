@@ -17,10 +17,10 @@ const DashboardRecentAlert: React.FC<DashboardRecentAlertProps> = ({ datas, navi
                 <CardTitle className="text-xl text-gray-500 pb-1">Recent Alert</CardTitle>
             </CardHeader>
             <CardContent className="flex flex-grow flex-col px-[5%] items-center justify-between gap-2">
-                <div className="flex flex-col gap-2 w-full">
-                    <AlertHeader showLocation={false} />
+                <AlertHeader showLocation={true} />
+                <div className="flex flex-grow flex-col gap-2 w-full justify-between">
                     {datas.map(data => (
-                        <AlertItem speed={data.speed} time={data.time} location={data.location} showLocation={false}/>
+                        <AlertItem speed={data.speed} time={data.time} location={data.location} showLocation={false} />
                     ))}
                 </div>
 
