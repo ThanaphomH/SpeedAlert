@@ -2,7 +2,7 @@ import { Data, DataResponse } from "@/interface/data";
 import axios from "axios";
 
 export default async function fetchLocation() : Promise<string[]>{
-  const response = await axios.get<DataResponse[]>("https://chadchart-backend.onrender.com/alert");
+  const response = await axios.get<DataResponse[]>(process.env.NEXT_PUBLIC_API_URL as string);
   const location : string[] = [];
   response.data.forEach(val => {
     const loca = Object.values(val)[0].location;
