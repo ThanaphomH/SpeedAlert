@@ -30,7 +30,7 @@ const AlertItem: React.FC<AlertItemProps> = ({ location, time, speed, showLocati
                 {showLocation ? date.toISOString().substring(0, 10) + " " + date.toISOString().substring(11 , 19) : date.toISOString().substring(5, 10) + " " + date.toISOString().substring(11 , 19)}
             </span>
             <span className="col-span-1">
-                {speed}
+                {speed.toFixed(2)}
             </span>
         </div>
     )
