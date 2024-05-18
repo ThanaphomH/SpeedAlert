@@ -1,4 +1,4 @@
-A  simple webpage for Embbedded System Lab class
+A  simple webpage for Embbedded System Lab class.   
 Hosting at https://speed-alert-dun.vercel.app/
 
 ## Getting Started
