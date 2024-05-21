@@ -22,7 +22,7 @@ const AlertItem: React.FC<AlertItemProps> = ({ location, time, speed, showLocati
     const { isOpen, onOpen, onClose } = useDisclosure();
     const date = new Date(time);
     return (
-        <div className={"grid w-full gap-1 items-center " + "grid-cols-7"}>
+        <div className={"grid w-full gap-1 items-center " + "grid-cols-7 " + (speed > 90 ? "text-red-600" : "")}>
             <span className="col-span-3">
                 {location}
             </span>

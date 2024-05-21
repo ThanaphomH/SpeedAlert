@@ -52,7 +52,7 @@ const Dashboard: React.FC<DashboardProps> = ({navigate}) => {
                     <div className="col-span-3 sm:col-span-1">
                         <DashboardCard
                             title="High Alerts"
-                            content={filteredData === undefined ? "0" : String(filteredData.filter(val => val.speed >= 125).length)}
+                            content={filteredData === undefined ? "0" : String(filteredData.filter(val => val.speed >= 90).length)}
                             icon="alert"
                         />
                     </div>
