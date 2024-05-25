@@ -56,16 +56,16 @@ export function Main() {
 
         {/* Left Tab */}
         <div className="flex flex-col gap-4 w-12 md:w-[15%] pl-6 py-6 font-bold items-end md:place-items-start">
-          <span className={(mode == "dashboard" ? "bg-gray-100" : "") + " flex md:w-full text-wrap [writing-mode:vertical-rl] md:[writing-mode:horizontal-tb] rotate-180 md:rotate-0 p-2 rounded-lg rounded-l-none md:rounded-l-lg md:rounded-r-none hover:cursor-pointer "} onClick={() => {setMode("dashboard")}}>
+          <span className={(mode == "dashboard" ? "bg-gray-100 dark:bg-black" : "") + " text-black dark:text-white flex md:w-full text-wrap [writing-mode:vertical-rl] md:[writing-mode:horizontal-tb] rotate-180 md:rotate-0 p-2 rounded-lg rounded-l-none md:rounded-l-lg md:rounded-r-none hover:cursor-pointer "} onClick={() => {setMode("dashboard")}}>
             Dashboard
           </span>
-          <span className={(mode == "alertrecord" ? "bg-gray-100" : "") + " flex md:w-full text-wrap [writing-mode:vertical-rl] md:[writing-mode:horizontal-tb] rotate-180 md:rotate-0 p-2 rounded-lg rounded-l-none md:rounded-l-lg md:rounded-r-none hover:cursor-pointer "} onClick={() => {setMode("alertrecord")}}>
+          <span className={(mode == "alertrecord" ? "bg-gray-100 dark:bg-black" : "") + " text-black dark:text-white flex md:w-full text-wrap [writing-mode:vertical-rl] md:[writing-mode:horizontal-tb] rotate-180 md:rotate-0 p-2 rounded-lg rounded-l-none md:rounded-l-lg md:rounded-r-none hover:cursor-pointer "} onClick={() => {setMode("alertrecord")}}>
             Alert Record
           </span>
         </div>
 
         {/* Right Tab */}
-        <div className="flex-1 flex-col bg-gray-100 p-6 dark:bg-gray-800 gap-4 min-h-svh">
+        <div className="flex-1 flex-col bg-gray-100 p-6 dark:bg-gray-800 dark:text-white gap-4 min-h-svh">
           {mainComponent}
         </div>
 
