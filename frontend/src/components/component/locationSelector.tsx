@@ -8,7 +8,7 @@ interface LocationSelectorProps {
 const LocationSelector: React.FC<LocationSelectorProps> = ({value , setValue}) => {
     return (
         <Select defaultValue="all" onValueChange={(val) => setValue(val)}>
-            <SelectTrigger className="w-48 text-black">
+            <SelectTrigger className="w-48 text-black dark:text-white">
                 <SelectValue placeholder="Select Location" />
             </SelectTrigger>
             <SelectContent>
